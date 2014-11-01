@@ -1,4 +1,16 @@
 NaoD::Application.routes.draw do
+  resources :courses do
+    member do
+      get 'fetch'
+    end
+    collection do
+      get 'dashboard'
+    end
+  end
+
+  resources :comments, :only => ['create']
+
+  root 'courses#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

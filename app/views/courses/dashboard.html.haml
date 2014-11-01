@@ -1,0 +1,15 @@
+%h #{@course.name}
+= form_for(@comment) do |f|
+  - if @comment.errors.any?
+    #error_explanation
+      %h2= #{pluralize(@category.errors.count, "error")} prohibited this category from being saved
+
+      %ul
+      - @course.errors.full_messages.each do |msg|
+        %li= msg
+
+  .field
+    = f.label :content
+    = f.text_field :content
+  .action
+    = f.submit "Submit"
