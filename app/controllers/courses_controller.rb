@@ -104,8 +104,8 @@ class CoursesController < ApplicationController
     # Get course for a student
     def validate_course
       if session.has_key? :course_id
-        @course = Course.find(session[:course_id])
-        if @course and params[:course_specifier] == @course.specifier
+        @course = Course.find_by_id(session[:course_id])
+        if @course
           return true
         end
       end
