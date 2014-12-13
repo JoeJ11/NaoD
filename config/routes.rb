@@ -2,9 +2,11 @@ NaoD::Application.routes.draw do
   resources :courses do
     member do
       get 'fetch'
+      get 'course_exit'
     end
     collection do
       get 'dashboard'
+      get 'register'
     end
   end
 

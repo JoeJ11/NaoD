@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy, :fetch]
+  before_action :set_course, only: [:show, :edit, :update, :destroy, :fetch, :exit]
 
   # GET /courses
   # GET /courses.json
@@ -93,6 +93,33 @@ class CoursesController < ApplicationController
       end
     end
     @comment = Comment.new(course: @course)
+  end
+
+  # GET /courses/register
+  def register
+    course = {}
+    course[:name] = params['name']
+    course[:description] = params['description']
+    specifier = random_string
+    while not Course.find_by_specifier(specifier).nil?
+      specifier = random_string
+    end
+    course[:specifier] = specifier
+    @course = Course.new(course)
+
+    if @course.save
+      render json: @course
+    else
+      render json: nil
+    end
+  end
+
+  # GET /courses/1/course_exit
+  def course_exit
+    if session.has_key? :course_id
+      session.clear
+    end
+    redirect_to '/'
   end
 
   private
