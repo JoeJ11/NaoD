@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Online In-class DM</title>
+	
+	<script src="/js/jquery-1.11.1.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+</head>
+<body onLoad="document.forms.courseIDForm.inputMessage.focus()">
+    <%- if notice %>
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <%= notice %>
+    </div>
+    <% end %>
+
+    <div class="container">
+        <blockquote><h2 class="text-primary"><%= @course.name %></h2></blockquote>
+        <%= form_for @comment, :html => {:class => 'form-horizontal', :name => 'courseIDForm'} do |f| %>
+            <div class="form-group col-sm-8">
+                <label for="inputMessage" class="control-label col-sm-3">Message:</label>
+                <div class="col-sm-9">
+                    <input class="form-control" name="comment[content]" id="inputMessage" placeholder="Edit your DM message here">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Send!</button>
+        <% end %>
+        <div style="margin-top: 30px;"></div><a href=<%= "/courses/#{@course.id}/course_exit"%>>
+        Not your class?
+        </a></div>
+    </div>
+
+</body>
+
+</html>

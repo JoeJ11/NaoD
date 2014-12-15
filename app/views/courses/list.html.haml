@@ -19,8 +19,3 @@
 %br
 
 = link_to 'New Course', new_course_path
-
-= form_tag('/courses/dashboard', method: 'get') do
-  = label_tag(:id, 'Course ID')
-  = text_field_tag(:id)
-  = submit_tag('GO!')

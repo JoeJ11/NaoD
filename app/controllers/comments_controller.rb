@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to :back, notice: 'Success!' }
+        format.html { redirect_to :back, notice: "Your message #{@comment.content} is successfully updated!" }
       else
         format.html { redirect_to :back, notice: 'An error happened! Please try again.' }
       end

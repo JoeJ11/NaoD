@@ -7,6 +7,7 @@ NaoD::Application.routes.draw do
     collection do
       get 'dashboard'
       get 'register'
+      get 'list'
     end
   end
 

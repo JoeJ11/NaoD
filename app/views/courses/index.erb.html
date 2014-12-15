@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Online In-class DM</title>
+	
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+</head>
+<body onLoad="document.forms.courseIDForm.courseID.focus()">
+	<div class="container">
+		<blockquote><h2>Welcome to the Online In-class DM System!</h2></blockquote>
+		<form class="form-horizontal" name="courseIDForm" role="form" action="/courses/dashboard">
+			<div class="form-group col-sm-8">
+				<label for="inputCourseID" class="control-label col-sm-3">Course ID:</label>
+				<div class="col-sm-9">
+					<input class="form-control" name="id" id="inputCourseID" placeholder="Enter the Course ID shown on the screen">
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary">Join!</button>
+		</form>
+	</div>
+</body>
+
+</html>

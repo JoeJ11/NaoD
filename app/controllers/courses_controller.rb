@@ -5,9 +5,10 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     if validate_course
-      redirect_to '/courses/dashboard'
+      redirect_to '/courses/dashboard' and return
     end
     @courses = Course.all
+    render 'index.erb.html'
   end
 
   # GET /courses/1
@@ -93,6 +94,7 @@ class CoursesController < ApplicationController
       end
     end
     @comment = Comment.new(course: @course)
+    render 'dm.erb.html'
   end
 
   # GET /courses/register
@@ -120,6 +122,11 @@ class CoursesController < ApplicationController
       session.clear
     end
     redirect_to '/'
+  end
+
+  # GET /courses/list
+  def list
+    @courses = Course.all
   end
 
   private
